@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  php-apache-environment:
+    container_name: php8-scanzap
+    build: 
+      context: ./volumes
+      dockerfile: Dockerfile
+    volumes:
+      - ./volumes/src/scanzap:/var/www/html
+    ports:
+      - 2020:80
+    environment:
+      TZ: "Asia/Bangkok"
+    networks:
+      env_developer: {}
+
+networks:
+  env_developer:
+    external: true
